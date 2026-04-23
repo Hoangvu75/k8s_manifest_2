@@ -30,7 +30,10 @@ kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/st
 ```
 
 ### 2. Update Configuration
-Edit the following files with your repository URL:
+
+The repository URL has been configured to: `https://github.com/Hoangvu75/k8s_manifest_2`
+
+If you need to change it, edit the following files:
 - `bootstrap/bootstrap-app.yaml` - Update `repoURL`
 - `apps/sample-app/applicationset.yaml` - Update `repoURL`
 
