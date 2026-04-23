@@ -1,0 +1,33 @@
+{{- if .Values.sampleApp.enabled }}
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: {{ .Values.sampleApp.name }}
+  namespace: {{ .Values.sampleApp.namespace }}
+spec:
+  generators:
+    - list:
+        elements:
+          {{- range .Values.sampleApp.clusters }}
+          - cluster: {{ .name }}
+            url: {{ .url }}
+          {{- end }}
+  template:
+    metadata:
+      name: '{{ "{{" }}cluster{{ "}}" }}-sample-app'
+    spec:
+      project: default
+      source:
+        repoURL: {{ .Values.global.repoURL }}
+        targetRevision: {{ .Values.global.targetRevision }}
+        path: {{ .Values.sampleApp.path }}
+      destination:
+        server: '{{ "{{" }}url{{ "}}" }}'
+        namespace: sample-app
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+{{- end }}
