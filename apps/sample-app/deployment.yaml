@@ -27,19 +27,3 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: sample-app
-  namespace: sample-app
-  labels:
-    app: sample-app
-spec:
-  type: ClusterIP
-  ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
-  selector:
-    app: sample-app
