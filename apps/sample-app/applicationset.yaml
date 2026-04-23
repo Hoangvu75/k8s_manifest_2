@@ -15,7 +15,7 @@ spec:
     spec:
       project: default
       source:
-        repoURL: https://github.com/your-org/your-repo.git
+        repoURL: https://github.com/Hoangvu75/k8s_manifest_2
         targetRevision: HEAD
         path: apps/sample-app
       destination:
