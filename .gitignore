@@ -1,20 +1,22 @@
-```
+```yaml
 # Compiled and build artifacts
 *.pyc
 __pycache__/
+*.class
 *.o
 *.obj
+*.out
 dist/
 build/
 target/
 
 # Dependencies
-.venv/
-venv/
 node_modules/
-.mypy_cache/
-.pytest_cache/
-.gradle/
+venv/
+.venv/
+.env
+.env.local
+*.env.*
 
 # Logs and temp files
 *.log
@@ -22,14 +24,11 @@ node_modules/
 *.swp
 *.swo
 
-# Environment
-.env
-.env.local
-*.env.*
-
 # Editors
 .vscode/
 .idea/
+*.swp
+*.swo
 
 # System files
 .DS_Store
@@ -40,7 +39,15 @@ coverage/
 htmlcov/
 .coverage
 
-# Compressed files
+# Python specific
+.mypy_cache/
+.pytest_cache/
+
+# Java/Gradle
+.gradle/
+*.class
+
+# Compression archives
 *.zip
 *.gz
 *.tar
@@ -59,4 +66,8 @@ htmlcov/
 *.Z
 *.lz
 *.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 ```
