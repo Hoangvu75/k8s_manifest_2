@@ -1,0 +1,29 @@
+```yaml
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: sample-app
+spec:
+  generators:
+  - git:
+      repoURL: https://github.com/your-repo/your-project.git
+      revision: HEAD
+      directories:
+      - path: apps/sample-app
+  template:
+    metadata:
+      name: '{{path.basename}}'
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/your-repo/your-project.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: default
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
+```
