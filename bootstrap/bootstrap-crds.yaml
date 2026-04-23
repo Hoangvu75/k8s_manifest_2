@@ -1,20 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bootstrap
+  name: bootstrap-crds
   namespace: argocd
   annotations:
-    argocd.argoproj.io/sync-wave: "0"
+    argocd.argoproj.io/sync-wave: "-100"
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/Hoangvu75/k8s_manifest_2.git
+    repoURL: https://github.com/Hoangvu75/k8s_manifest_2
     targetRevision: HEAD
-    path: helm-chart
-    helm:
-      releaseName: k8s-manifest
+    path: crds
   destination:
     server: https://kubernetes.default.svc
     namespace: argocd
@@ -24,3 +22,4 @@ spec:
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+      - SkipDryRunOnMissingResource=true
