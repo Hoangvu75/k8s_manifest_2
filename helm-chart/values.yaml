@@ -1,0 +1,21 @@
+# Global configuration
+global:
+  repoURL: https://github.com/Hoangvu75/k8s_manifest_2
+  targetRevision: HEAD
+
+# Bootstrap application configuration
+bootstrap:
+  enabled: true
+  name: bootstrap
+  namespace: argocd
+  path: apps
+
+# Sample app configuration
+sampleApp:
+  enabled: true
+  name: sample-app
+  namespace: argocd
+  path: apps/sample-app
+  clusters:
+    - name: dev
+      url: https://kubernetes.default.svc

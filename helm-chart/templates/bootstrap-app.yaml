@@ -1,24 +1,24 @@
+{{- if .Values.bootstrap.enabled }}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bootstrap
-  namespace: argocd
+  name: {{ .Values.bootstrap.name }}
+  namespace: {{ .Values.bootstrap.namespace }}
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://github.com/Hoangvu75/k8s_manifest_2.git
-    targetRevision: HEAD
-    path: helm-chart
-    helm:
-      releaseName: k8s-manifest
+    repoURL: {{ .Values.global.repoURL }}
+    targetRevision: {{ .Values.global.targetRevision }}
+    path: {{ .Values.bootstrap.path }}
   destination:
     server: https://kubernetes.default.svc
-    namespace: argocd
+    namespace: {{ .Values.bootstrap.namespace }}
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
     syncOptions:
       - CreateNamespace=true
+{{- end }}
