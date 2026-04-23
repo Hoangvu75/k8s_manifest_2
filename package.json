@@ -1,0 +1,21 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "This repository contains the ArgoCD deployment configuration using the **App of Apps** pattern.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^25.6.0",
+    "cdk8s": "^2.70.58",
+    "cdk8s-cli": "^2.206.5",
+    "cdk8s-plus-26": "^2.18.90",
+    "cdk8s-plus-27": "^2.9.5",
+    "constructs": "^10.6.0",
+    "typescript": "^6.0.3"
+  }
+}
