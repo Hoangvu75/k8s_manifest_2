@@ -1,5 +1,5 @@
 import { Construct } from 'constructs';
-import { App, Chart, ChartProps, ApiObject } from 'cdk8s';
+import { App, Chart, ChartProps, ApiObject, Size } from 'cdk8s';
 import * as kplus from 'cdk8s-plus-26';
 
 /**
@@ -28,8 +28,8 @@ export class SampleAppChart extends Chart {
               limit: kplus.Cpu.millis(500),
             },
             memory: {
-              request: { amount: 64 },
-              limit: { amount: 128 },
+              request: Size.mebibytes(64),
+              limit: Size.mebibytes(128),
             },
           },
         },
@@ -46,9 +46,6 @@ export class SampleAppChart extends Chart {
       serviceType: kplus.ServiceType.CLUSTER_IP,
       ports: [{ port: 80, targetPort: 80 }],
       name: 'sample-app',
-      labels: {
-        app: 'sample-app',
-      },
     });
   }
 }
